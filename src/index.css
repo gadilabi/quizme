@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+option:invalid, select{
+	color: rgb(150,150,150);
+}
+
+select:first-child{
+	color: rgb(100,100,100);
+}
+
+option{
+	
+	color: rgb(100,100,100);
+}
