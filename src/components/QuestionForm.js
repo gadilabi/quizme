@@ -21,7 +21,7 @@ const QuestionForm = (props)=>{
 	return (
 		<div style={styleForm()} >
 		
-			<h3 onChange={props.updateTitle} style= {{gridArea:"header"}} >Qustion {props.index + 1}</h3>
+			<h3 style= {{gridArea:"header"}} >Qustion {props.index + 1}</h3>
 			<textarea onChange={(e) => props.updateQuiz(e, props.index, "question")} style={{gridArea: "question"}} name="" id="" ></textarea>
 			<input onChange={(e) => props.updateQuiz(e, props.index, "answer_1")} style={{gridArea: "answer_1"}} type="text" placeholder="answer-1" />
 			<input onChange={(e) => props.updateQuiz(e, props.index, "answer_2")} style={{gridArea: "answer_2"}} type="text" placeholder="answer-2" />

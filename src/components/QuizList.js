@@ -21,7 +21,7 @@ const QuizList = (props)=>{
 	const quizListElements = quizList.map((quiz)=>{
 		
 		return(
-			<QuizListItem to={quiz.id} title={quiz.title} key={quiz.id} />
+			<QuizListItem to={"/quiz/" + quiz.id} title={quiz.title} key={quiz.id} />
 		);
 		
 	});

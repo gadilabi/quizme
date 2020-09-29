@@ -104,7 +104,7 @@ const Quiz = (props)=>{
 	
 	const postQuiz = (e)=>{
 		setQuizList([...quizList, {title: title, questions: quiz, id: Math.round(Math.random()*100000)}]); 
-		
+		props.history.push('/');
 	};
 	
 	

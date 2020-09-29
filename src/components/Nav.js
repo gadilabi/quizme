@@ -10,11 +10,24 @@ const Nav = (props)=>{
 			return {
 				textDecoration: "none",
 				color:"white",
-				marginRight: "auto",
+				marginRight: "40px",
 				marginLeft: "40px",
 				fontWeight: "bold",
+				fontSize: "40px"
 
 			};
+			
+		}
+		
+		if(type === "sign in"){
+			
+			return{
+				textDecoration: "none",
+				color:"white",
+				margin: "0px 20px 0px auto",
+				
+				
+			}
 			
 		}
 
@@ -36,6 +49,8 @@ const Nav = (props)=>{
 			<Link  style={styleLink("logo")} to="/">QuizMe</Link>
 			<Link  style={styleLink()} to="/post_quiz">Post Quiz</Link>
 			<Link  style={styleLink()} to="/">Quizes</Link>
+			<Link  style={styleLink("sign in")} to="/">Sign in</Link>
+			<Link  style={styleLink()} to="/">Sign up</Link>
 			
 		</div>
 	

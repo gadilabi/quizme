@@ -24,7 +24,7 @@ const QuizListItem = (props)=>{
 	
 	return (
 		<div style={styleWrapper()} >
-			<Link style={styleLink()}>{props.title}</Link>
+			<Link to={props.to} style={styleLink()}>{props.title}</Link>
 			
 		</div>
 	
