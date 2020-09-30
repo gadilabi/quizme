@@ -114,10 +114,13 @@ const Quiz = (props)=>{
 			<div style={{backgroundColor: "white", width: "800px", marginTop: "40px", borderRadius: "10px", padding: "20px", display:"flex", flexDirection: "column"}}>
 				<h2 style={{fontSize: "40px", marginBottom: "0px", textAlign: "center"}} >Create Quiz</h2>
 				<form style={{marginTop: "20px", borderRadius: "6px", display:"flex", flexDirection: "column"}} action="">
-					<input onChange={updateTitle} type="text" name="title" placeholder="Enter quiz name" />
+					
+					<div style={{height: "60px"}} className="input-wrapper">
+						<input className="field" onChange={updateTitle} type="text" name="title" placeholder="Enter quiz name" />
+						<label for="">Title</label>
+					</div>
 
-					{questionForms}
-
+						{questionForms}
 				</form>
 
 				<button onClick={addQuestion} style={styleBtn("add")} >Add Question</button>

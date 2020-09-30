@@ -6,9 +6,14 @@ const QuizListItem = (props)=>{
 	const styleWrapper = ()=>{
 		return {
 			padding: "5px 10px",
-			backgroundColor: "lightslategrey",
+			backgroundColor: "darkcyan",
 			margin: "10px",
-			borderRadius: "6px"
+			borderRadius: "6px",
+			display: "flex",
+			justifyContent: "center",
+			alignItems: "center",
+			flexDirection: "column",
+			color: "white"
 		};
 		
 	};
@@ -17,7 +22,9 @@ const QuizListItem = (props)=>{
 		
 		return {
 			textDecoration: "none",
-			color: "white"
+			color: "white",
+			fontSize: "20px",
+			marginBottom: "10px"
 			
 		}
 	}
@@ -25,7 +32,7 @@ const QuizListItem = (props)=>{
 	return (
 		<div style={styleWrapper()} >
 			<Link to={props.to} style={styleLink()}>{props.title}</Link>
-			
+			<span>{props.length} Questions</span>
 		</div>
 	
 	);

@@ -13,20 +13,47 @@ const QuestionForm = (props)=>{
 				"question answer_3 answer_4"
 				"solution ... ..."
 				`,
-			gridGap: "3px"
+			gridGap: "10px",
+			gridTemplateRows: "auto 60px 60px 40px"
+			
 		};
 		
 	}
 	
 	return (
-		<div style={styleForm()} >
+		<div className="question-form-wrapper" style={styleForm()} >
 		
-			<h3 style= {{gridArea:"header"}} >Qustion {props.index + 1}</h3>
-			<textarea onChange={(e) => props.updateQuiz(e, props.index, "question")} style={{gridArea: "question"}} name="" id="" ></textarea>
-			<input onChange={(e) => props.updateQuiz(e, props.index, "answer_1")} style={{gridArea: "answer_1"}} type="text" placeholder="answer-1" />
-			<input onChange={(e) => props.updateQuiz(e, props.index, "answer_2")} style={{gridArea: "answer_2"}} type="text" placeholder="answer-2" />
-			<input onChange={(e) => props.updateQuiz(e, props.index, "answer_3")} style={{gridArea: "answer_3"}} type="text" placeholder="answer-3" />
-			<input onChange={(e) => props.updateQuiz(e,props.index, "answer_4")} style={{gridArea: "answer_4"}} type="text" placeholder="answer-4" />
+			<h3 style= {{gridArea:"header", marginBottom: "0px"}} >Qustion {props.index + 1}</h3>
+		
+			<div className="input-wrapper" style={{gridArea: "question"}}>
+				
+				<textarea className="field" style={{height:"80%"}} placeholder="Question" onChange={(e) => props.updateQuiz(e, props.index, "question")}  name="" id="" ></textarea>
+				<label for="">Question</label>				
+				
+			</div>			
+			
+			<div class="input-wrapper">
+				<input className="field" onChange={(e) => props.updateQuiz(e, props.index, "answer_1")} style={{gridArea: "answer_1"}} type="text" placeholder="answer-1" />
+				<label for="">answer 1</label>				
+			</div>
+			<div class="input-wrapper">
+				<input className="field" onChange={(e) => props.updateQuiz(e, props.index, "answer_2")} style={{gridArea: "answer_2"}} type="text" placeholder="answer-2" />
+				<label for="">answer 2</label>
+				
+			</div>
+			
+			<div class="input-wrapper">
+				<input className="field" onChange={(e) => props.updateQuiz(e, props.index, "answer_3")} style={{gridArea: "answer_3"}} type="text" placeholder="answer-3" />
+				<label for="">answer 3</label>
+				
+			</div>			
+			
+			<div class="input-wrapper">
+				<input className="field" onChange={(e) => props.updateQuiz(e,props.index, "answer_4")} style={{gridArea: "answer_4"}} type="text" placeholder="answer-4" />
+				<label for="">answer 4</label>
+				
+			</div>			
+			
 			
 			<select onChange={(e) => props.updateQuiz(e, props.index, "solution")} style={{gridArea: "solution"}} required name="" id="">
 				<option disabled selected value="">Correct Answer</option>

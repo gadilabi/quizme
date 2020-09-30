@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { QuizListContext } from '../contexts/QuizListContext'
+import { QuizListContext } from '../contexts/QuizListContext';
 import Question from './Question.js';
 
 const Quiz = (props)=>{
