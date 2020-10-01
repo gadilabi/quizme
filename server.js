@@ -44,145 +44,149 @@ app.use(express.urlencoded({
 //Homepage
 app.get('/get_quizes', function (req, res) {
 
+	let payload = {};
+	let quizes = [];
 	
-//	db.collection('quizes').get()
-//		.then((snapshot)=>{
-//			let payload = {data:null};
-//			let quizes = [];
-//		snapshot.docs.forEach((doc)=>{
-//			let data = doc.data();
-//			data.id = doc.id;
-//			quizes.push(data);
-//			
-//		});
-//		payload["data"] = quizes;
-//		
-//		res.json(payload);
-//		
-//	}).catch(err=>console.log(err));
-//	;
-
-	let data = [
-			{
-			title: "silly googse",
-			 id: 1,
-			 questions: 
-			[
-				{
-				 question: "Who will be the next nba champions?",
-				 answer_1: "me",
-				 answer_2: "lakers",
-				 answer_3: "miami heat",
-				 answer_4: "Clippers",
-				 solution:"answer_3"
-			 
-			 	} 
-			  
-			  ] 
-			},
+	db.collection('quizes').get()
+		.then((snapshot)=>{
+			snapshot.docs.forEach((doc)=>{
+				let data = doc.data();
+				data.id = doc.id;
+				quizes.push(data);
+			
+		});
 		
-			{
-			title: "silly googse",
-			 id: 2,
-			 questions: 
-			[
-				{
-				 question: "Who will be the next nba champions?",
-				 answer_1: "me",
-				 answer_2: "lakers",
-				 answer_3: "miami heat",
-				 answer_4: "Clippers",
-				 solution:"answer_3"
-			 
-			 	} 
-			  
-			  ] 
-			},
+		payload["data"] = quizes;
 		
-			{
-			title: "silly googse",
-			 id: 3,
-			 questions: 
-			[
-				{
-				 question: "Who will be the next nba champions?",
-				 answer_1: "me",
-				 answer_2: "lakers",
-				 answer_3: "miami heat",
-				 answer_4: "Clippers",
-				 solution:"answer_3"
-			 
-			 	} 
-			  
-			  ] 
-			},
+		res.json(payload);
 		
-			{
-			title: "silly googse",
-			 id: 4,
-			 questions: 
-			[
-				{
-				 question: "Who will be the next nba champions?",
-				 answer_1: "me",
-				 answer_2: "lakers",
-				 answer_3: "miami heat",
-				 answer_4: "Clippers",
-				 solution:"answer_3"
-			 
-			 	} 
-			  
-			  ] 
-			},
-		
-			{
-			title: "silly googse",
-			 id: 5,
-			 questions: 
-			[
-				{
-				 question: "Who will be the next nba champions?",
-				 answer_1: "me",
-				 answer_2: "lakers",
-				 answer_3: "miami heat",
-				 answer_4: "Clippers",
-				 solution:"answer_3"
-			 
-			 	} 
-			  
-			  ] 
-			},
-		
-			{
-			title: "silly googse",
-			 id: 6,
-			 questions: 
-			[
-				{
-				 question: "Who will be the next nba champions?",
-				 answer_1: "me",
-				 answer_2: "lakers",
-				 answer_3: "miami heat",
-				 answer_4: "Clippers",
-				 solution:"answer_3"
-			 
-			 	} 
-			  
-			  ] 
-			},
-		
-		
-	]
+	}).catch(err=>console.log(err));
+	;
 	
-	let payload = {data};
-	console.log("touch");
-	res.json(payload);
+//	let data = [
+//			{
+//			title: "silly googse",
+//			 id: 1,
+//			 questions: 
+//			[
+//				{
+//				 question: "Who will be the next nba champions?",
+//				 answer_1: "me",
+//				 answer_2: "lakers",
+//				 answer_3: "miami heat",
+//				 answer_4: "Clippers",
+//				 solution:"answer_3"
+//			 
+//			 	} 
+//			  
+//			  ] 
+//			},
+//		
+//			{
+//			title: "silly googse",
+//			 id: 2,
+//			 questions: 
+//			[
+//				{
+//				 question: "Who will be the next nba champions?",
+//				 answer_1: "me",
+//				 answer_2: "lakers",
+//				 answer_3: "miami heat",
+//				 answer_4: "Clippers",
+//				 solution:"answer_3"
+//			 
+//			 	} 
+//			  
+//			  ] 
+//			},
+//		
+//			{
+//			title: "silly googse",
+//			 id: 3,
+//			 questions: 
+//			[
+//				{
+//				 question: "Who will be the next nba champions?",
+//				 answer_1: "me",
+//				 answer_2: "lakers",
+//				 answer_3: "miami heat",
+//				 answer_4: "Clippers",
+//				 solution:"answer_3"
+//			 
+//			 	} 
+//			  
+//			  ] 
+//			},
+//		
+//			{
+//			title: "silly googse",
+//			 id: 4,
+//			 questions: 
+//			[
+//				{
+//				 question: "Who will be the next nba champions?",
+//				 answer_1: "me",
+//				 answer_2: "lakers",
+//				 answer_3: "miami heat",
+//				 answer_4: "Clippers",
+//				 solution:"answer_3"
+//			 
+//			 	} 
+//			  
+//			  ] 
+//			},
+//		
+//			{
+//			title: "silly googse",
+//			 id: 5,
+//			 questions: 
+//			[
+//				{
+//				 question: "Who will be the next nba champions?",
+//				 answer_1: "me",
+//				 answer_2: "lakers",
+//				 answer_3: "miami heat",
+//				 answer_4: "Clippers",
+//				 solution:"answer_3"
+//			 
+//			 	} 
+//			  
+//			  ] 
+//			},
+//		
+//			{
+//			title: "silly googse",
+//			 id: 6,
+//			 questions: 
+//			[
+//				{
+//				 question: "Who will be the next nba champions?",
+//				 answer_1: "me",
+//				 answer_2: "lakers",
+//				 answer_3: "miami heat",
+//				 answer_4: "Clippers",
+//				 solution:"answer_3"
+//			 
+//			 	} 
+//			  
+//			  ] 
+//			},
+//		
+//		
+//	]
+	
 	
 	
 });
 
 app.post('/post_quiz', function (req, res) {
-	db.collection('quizes').add(quiz).then(()=> console.log("added")).catch(()=>console.log("you missed it by one mile"));
+	
+	const quiz = req.body;
+	
+	//Add quiz to collection
+	db.collection('quizes').add(quiz)
+		.then((doc)=> res.json({status:"success", id: doc.id}))
+		.catch((err)=> res.json({status: "failure"}) );
 	
 });
 

@@ -51,11 +51,36 @@ const QuizList = (props)=>{
 		}
 		
 	}
+	
+	function styleAddQuizBtn(){
+		return {
+			position:"relative",
+			display: "flex",
+			justifyContent: "center",
+			alignItems: "center",
+			borderRadius: "100%",
+			backgroundColor: "salmon",
+			width: "60px",
+			height: "60px",
+			textDecoration: "none",
+			color: "ghostwhite",
+			fontSize: "40px",
+			padding: "0",
+			verticalAlign: "middle",
+			boxShadow: "1px 3px 8px 0 rgba(0, 0, 0, 0.5)"
+			
+			
+		};
+		
+	}
 		
 	
 	return (
 		
 		<div style={styleQuizListPage()}>
+		
+		
+			<Link class="post-quiz-link" style={styleAddQuizBtn()} to="/post_quiz"><span style={{verticalAlign: "middle", transform: "translateY(-3px)"}} >+</span></Link>
 			<div style={styleQuizListWrapper()} >
 
 				{ quizListElements }

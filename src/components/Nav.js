@@ -44,13 +44,9 @@ const Nav = (props)=>{
 	}
 	
 	return (
-		<div style={{fontSize: "25px", backgroundColor: "lightseagreen", display: "flex", alignItems: "center", color: "white", height: "80px"}} >
+		<div style={{fontSize: "25px", backgroundColor: "lightseagreen", display: "flex", alignItems: "center", justifyContent: "center", color: "white", height: "80px"}} >
 		
 			<Link  style={styleLink("logo")} to="/">QuizMe</Link>
-			<Link  style={styleLink()} to="/post_quiz">Post Quiz</Link>
-			<Link  style={styleLink()} to="/">Quizes</Link>
-			<Link  style={styleLink("sign in")} to="/">Sign in</Link>
-			<Link  style={styleLink()} to="/">Sign up</Link>
 			
 		</div>
 	
