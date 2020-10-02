@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom';
 
 const QuizList = (props)=>{
 	
-	const { quizList, setQuizList, fetched, setFetched } = useContext(QuizListContext);
+	const { quizList, setQuizList, fetched, setFetched, subjects } = useContext(QuizListContext);
+	const [subject, setSubject] = useState("all");
 	
 	useEffect(()=>{
 		if(fetched) return;
@@ -18,10 +19,25 @@ const QuizList = (props)=>{
 	}, []);
 
 	const quizListElements = quizList.map((quiz)=>{
+
+		console.log(subject, quiz.subject);
+		if(quiz.subject === subject || subject === "all"){
+			console.log("inside");	
+			const color = subjects.reduce((a, subject)=>{
+				if(subject.name === quiz.subject)
+					return subject.color;
+				else
+					return a;
+			}, "");
+
+			return(
+				<QuizListItem length={quiz.questions.length} to={"/quiz/" + quiz.id} subject={{name: quiz.subject, color: color}} title={quiz.title} key={quiz.id} />
+			);
+			
+		}
 		
-		return(
-			<QuizListItem length={quiz.questions.length} to={"/quiz/" + quiz.id} title={quiz.title} key={quiz.id} />
-		);
+		return ;
+		
 		
 	});
 	
@@ -49,8 +65,8 @@ const QuizList = (props)=>{
 			
 		
 		}
-		
 	}
+	
 	
 	function styleAddQuizBtn(){
 		return {
@@ -74,11 +90,28 @@ const QuizList = (props)=>{
 		
 	}
 		
+		const subjectsJSX = subjects.map((subject)=>{
+			return(
+			
+				<button onClick={selectSubject} className="subject-btn" style={{backgroundColor: subject.color}}>{subject.name}</button>
+			);
+			
+		});
+		
+	
+	function selectSubject(e){
+		setSubject(e.target.textContent);
+		
+	}
 	
 	return (
 		
 		<div style={styleQuizListPage()}>
 		
+			<div id="subjects">
+				{subjectsJSX}
+				
+			</div>
 		
 			<Link class="post-quiz-link" style={styleAddQuizBtn()} to="/post_quiz"><span style={{verticalAlign: "middle", transform: "translateY(-3px)"}} >+</span></Link>
 			<div style={styleQuizListWrapper()} >

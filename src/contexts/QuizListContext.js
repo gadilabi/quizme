@@ -4,7 +4,7 @@ export const QuizListContext = createContext();
 
 const QuizListContextProvider = (props)=>{
 
-
+	const [subjects] = useState([{name: "Science", color: "lightpink"}, {name: "History", color: "lightskyblue"}, {name: "Art", color: "lightcoral"}]);
 	const [fetched, setFetched] = useState(false);
 	const [quizList, setQuizList] = useState([
 		
@@ -19,7 +19,7 @@ const QuizListContextProvider = (props)=>{
 	
 	
 	return(
-		<QuizListContext.Provider value={{quizList, setQuizList, fetched, setFetched}}>
+		<QuizListContext.Provider value={{quizList, setQuizList, fetched, setFetched, subjects}}>
 			{props.children}
 		</QuizListContext.Provider>
 		

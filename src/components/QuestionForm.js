@@ -18,8 +18,8 @@ const QuestionForm = (props)=>{
 			
 		};
 		
-	}
-	
+	};
+		
 	return (
 		<div className="question-form-wrapper" style={styleForm()} >
 		

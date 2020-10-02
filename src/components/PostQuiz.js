@@ -5,8 +5,10 @@ import loading from '../img/loading.svg';
 const Quiz = (props)=>{
 	
 	//List of all quizes
-	const { quizList, setQuizList } = useContext(QuizListContext);
+	const { quizList, setQuizList, subjects } = useContext(QuizListContext);
 
+	console.log(subjects);
+	
 	//Number of questions in currently created quiz
 	const [state, setState] = useState({
 		
@@ -21,6 +23,9 @@ const Quiz = (props)=>{
 	//The title of the currently created quiz
 	const [title, setTitle] = useState("");
 	
+	//The subject of the quiz
+	const [subject, setSubject] = useState("");
+	
 	//The questions array of the currently created quiz
 	const [quiz, setQuiz] = useState([
 		{
@@ -32,6 +37,16 @@ const Quiz = (props)=>{
 			solution: null
 		
 		}]);
+	
+	
+	const subjectsJSX = subjects.map((subject)=>{
+		
+		return (
+			<option value={subject.name} style={{backgroundColor: subject.color}} >{subject.name}</option>
+			
+		);
+		
+	});
 	
 	//Update the title of the quiz
 	const updateTitle = (e) =>{
@@ -128,6 +143,7 @@ const Quiz = (props)=>{
 		//Create the quiz object which will be sent in the body of the request
 		const body = {
 			title: title,
+			subject: subject,
 			questions: quiz,
 			
 		} ;
@@ -148,7 +164,7 @@ const Quiz = (props)=>{
 				//If the quiz was successfuly added to the db then...
 				if (payload.status === 'success') {
 					//Update dom with the newly created quiz
-					setQuizList([...quizList, {title: title, questions: quiz, id: payload.id}]);
+					setQuizList([...quizList, {title: title, subject: subject, questions: quiz, id: payload.id}]);
 					
 					//Redirect to /
 					props.history.push('/');
@@ -184,6 +200,20 @@ const Quiz = (props)=>{
 		
 	}
 	
+	function selectSubject(e){
+		const select = e.target;
+		const selectedIndex = select.options.selectedIndex;
+		const selectedOption = select[selectedIndex];
+		const selectedValue = selectedOption.value;
+		
+		select.style.backgroundColor = selectedOption.style.backgroundColor;
+		
+		
+		setSubject(selectedValue);
+		
+	}
+	
+	
 	return (
 		<div style={{minHeight: "100vh", backgroundColor: "ghostwhite", display: "flex", flexDirection:"column", alignItems: "center"}} >
 		
@@ -192,10 +222,15 @@ const Quiz = (props)=>{
 				<form style={{marginTop: "20px", borderRadius: "6px", display:"flex", flexDirection: "column"}} action="">
 					
 					<div style={{height: "60px"}} className="input-wrapper">
-						<input className="field" onChange={updateTitle} type="text" name="title" placeholder="Enter quiz name" />
+						<input className="field" onChange={updateTitle} type="text" name="title" placeholder="Title" />
 						<label for="">Title</label>
 					</div>
-
+					
+					<select onChange={selectSubject} style={{width: "270px", height: "40px", marginTop: "20px"}}>
+						{subjectsJSX}
+						
+					</select>
+					
 						{questionForms}
 				</form>
 
