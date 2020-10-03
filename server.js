@@ -29,7 +29,7 @@ app.listen(PORT, (err) => {
 });
 
 //Set the public folder as static
-app.use(express.static('/'));
+app.use(express.static('client/build'));
 
 
 app.use(express.json());
@@ -188,7 +188,8 @@ app.post('/post_quiz', function (req, res) {
 });
 
 
-app.get('*', (req, res)=>{
+app.get('/', (req, res)=>{
+	console.log(req.url);
 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 	
 });
