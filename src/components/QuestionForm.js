@@ -56,7 +56,7 @@ const QuestionForm = (props)=>{
 			
 			
 			<select onChange={(e) => props.updateQuiz(e, props.index, "solution")} style={{gridArea: "solution"}} required name="" id="">
-				<option disabled selected value="">Correct Answer</option>
+				<option disabled selected value="">Solution</option>
 				<option value="answer_1">Answer 1</option>
 				<option value="answer_2">Answer 2</option>
 				<option value="answer_3">Answer 3</option>

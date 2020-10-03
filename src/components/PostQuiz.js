@@ -213,11 +213,55 @@ const Quiz = (props)=>{
 		
 	}
 	
+	function stylePostQuizPage(){
+		
+		return {
+			minHeight: "100vh",
+			backgroundColor: "ghostwhite",
+			display: "flex",
+			flexDirection:"column",
+			alignItems: "center"
+		};
+	}
+	
+	function styleFormWrapper(){
+		return {
+			backgroundColor: "white",
+			width: "800px",
+			maxWidth: "80%",
+			marginTop: "40px",
+			borderRadius: "10px",
+			padding: "20px",
+			display:"flex",
+			flexDirection: "column"
+		};
+		
+	}
+	
+	function styleSelectSubject(){
+		
+		if(window.innerWidth < 600){
+			return {
+				width: "100%",
+				height: "40px",
+				marginTop: "20px"
+		};
+			
+		}
+		
+			return {
+				width: "270px",
+				height: "40px",
+				marginTop: "20px"
+		};
+		
+	}
+	
 	
 	return (
-		<div style={{minHeight: "100vh", backgroundColor: "ghostwhite", display: "flex", flexDirection:"column", alignItems: "center"}} >
+		<div style={stylePostQuizPage()} >
 		
-			<div style={{backgroundColor: "white", width: "800px", marginTop: "40px", borderRadius: "10px", padding: "20px", display:"flex", flexDirection: "column"}}>
+			<div style={styleFormWrapper()}>
 				<h2 style={{fontSize: "40px", marginBottom: "0px", textAlign: "center"}} >Create Quiz</h2>
 				<form style={{marginTop: "20px", borderRadius: "6px", display:"flex", flexDirection: "column"}} action="">
 					
@@ -226,7 +270,7 @@ const Quiz = (props)=>{
 						<label for="">Title</label>
 					</div>
 					
-					<select onChange={selectSubject} style={{width: "270px", height: "40px", marginTop: "20px"}}>
+					<select onChange={selectSubject} style={styleSelectSubject()}>
 						{subjectsJSX}
 						
 					</select>
