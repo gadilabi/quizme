@@ -56,22 +56,22 @@ const Question = (props)=>{
 			
 			<div>
 				<input data-value={props.answer_1} onChange={()=>props.markAnswer(props.index, "answer_1")} type="radio" name={props.index}/>
-				<label style={styleAnswer("answer_1")} for="">{props.answer_1}</label>
+				<label style={styleAnswer("answer_1")} htmlFor="">{props.answer_1}</label>
 			</div>
 			
 			<div>
 				<input data-value={props.answer_2} onChange={()=>props.markAnswer(props.index, "answer_2")} type="radio" name={props.index}/>
-				<label style={styleAnswer("answer_2")} for="">{props.answer_2}</label>
+				<label style={styleAnswer("answer_2")} htmlFor="">{props.answer_2}</label>
 			</div>									
 
 			<div>
 				<input data-value={props.answer_3} onChange={()=>props.markAnswer(props.index, "answer_3")} type="radio" name={props.index}/>
-				<label style={styleAnswer("answer_3")} for="">{props.answer_3}</label>
+				<label style={styleAnswer("answer_3")} htmlFor="">{props.answer_3}</label>
 			</div>									
 
 			<div>
 			<input data-value={props.answer_4} onChange={()=>props.markAnswer(props.index, "answer_4")} type="radio" name={props.index}/>
-			<label style={styleAnswer("answer_4")} for="">{props.answer_4}</label>
+			<label style={styleAnswer("answer_4")} htmlFor="">{props.answer_4}</label>
 			</div>									
 									
 												

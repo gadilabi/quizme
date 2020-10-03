@@ -267,7 +267,7 @@ const Quiz = (props)=>{
 					
 					<div style={{height: "60px"}} className="input-wrapper">
 						<input className="field" onChange={updateTitle} type="text" name="title" placeholder="Title" />
-						<label for="">Title</label>
+						<label htmlFor="">Title</label>
 					</div>
 					
 					<select onChange={selectSubject} style={styleSelectSubject()}>
