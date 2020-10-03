@@ -286,7 +286,7 @@ const Quiz = (props)=>{
 				</div>
 				
 				<button onClick={postQuiz} style={styleBtn()} >
-					<img class="post-quiz-loading" style={styleLoading(isLoading)} src={loading} alt=""/>
+					<img className="post-quiz-loading" style={styleLoading(isLoading)} src={loading} alt=""/>
 					Post Quiz
 				
 				</button>

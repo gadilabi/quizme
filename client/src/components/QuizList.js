@@ -113,7 +113,7 @@ const QuizList = (props)=>{
 				
 			</div>
 		
-			<Link class="post-quiz-link" style={styleAddQuizBtn()} to="/post_quiz"><span style={{verticalAlign: "middle", transform: "translateY(-3px)"}} >+</span></Link>
+			<Link className="post-quiz-link" style={styleAddQuizBtn()} to="/post_quiz"><span style={{verticalAlign: "middle", transform: "translateY(-3px)"}} >+</span></Link>
 			<div style={styleQuizListWrapper()} >
 
 				{ quizListElements }

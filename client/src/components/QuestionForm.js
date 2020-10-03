@@ -32,23 +32,23 @@ const QuestionForm = (props)=>{
 				
 			</div>			
 			
-			<div class="input-wrapper">
+			<div className="input-wrapper">
 				<input className="field" onChange={(e) => props.updateQuiz(e, props.index, "answer_1")} style={{gridArea: "answer_1"}} type="text" placeholder="answer-1" />
 				<label for="">answer 1</label>				
 			</div>
-			<div class="input-wrapper">
+			<div className="input-wrapper">
 				<input className="field" onChange={(e) => props.updateQuiz(e, props.index, "answer_2")} style={{gridArea: "answer_2"}} type="text" placeholder="answer-2" />
 				<label for="">answer 2</label>
 				
 			</div>
 			
-			<div class="input-wrapper">
+			<div className="input-wrapper">
 				<input className="field" onChange={(e) => props.updateQuiz(e, props.index, "answer_3")} style={{gridArea: "answer_3"}} type="text" placeholder="answer-3" />
 				<label for="">answer 3</label>
 				
 			</div>			
 			
-			<div class="input-wrapper">
+			<div className="input-wrapper">
 				<input className="field" onChange={(e) => props.updateQuiz(e,props.index, "answer_4")} style={{gridArea: "answer_4"}} type="text" placeholder="answer-4" />
 				<label for="">answer 4</label>
 				
