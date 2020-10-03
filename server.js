@@ -13,20 +13,12 @@ admin.initializeApp({
 //const {Firestore} = require('@google-cloud/firestore');
 
 const db = admin.firestore();
-const quiz = {title: "trial", questions: [{question: "am i stupid", answer_1: "yes", answer_2: "no", answer_3: "i dont kno", answer_4: "i dont care", solution: "answer_1"}]};
-
 
 //Port
 const PORT = process.env.PORT || 8080;
 
 //Initialize express app
 const app = express();
-
-//Set the view engine as ejs
-app.set('view engine', 'ejs');
-
-//Set the public folder as static
-app.use(express.static(path.join(__dirname,'build')));
 
 //Start listening
 app.listen(PORT, (err) => {
@@ -36,12 +28,17 @@ app.listen(PORT, (err) => {
         console.log('Listening on port ' + PORT);
 });
 
+//Set the public folder as static
+app.use(express.static('/'));
+
+
 app.use(express.json());
 app.use(express.urlencoded({
     extended:false
 }));
 
-//Homepage
+
+//API endpoint get all the quizes
 app.get('/get_quizes', function (req, res) {
 
 	let payload = {};
@@ -191,4 +188,8 @@ app.post('/post_quiz', function (req, res) {
 });
 
 
+app.get('*', (req, res)=>{
+	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+	
+});
 

@@ -1,0 +1,146 @@
+#subjects{
+/*	align-self: stretch;*/
+	display: flex;
+	flex-wrap: wrap;
+	width: 50%;
+	justify-content: center;
+	margin: 30px 0px;
+	position: relative;
+}
+
+#subjects::after{
+	content: '';
+	width: 400px;
+	height: 3px;
+	background-color: rgb(150,150,150);
+	position: absolute;
+	bottom: -20px;
+	
+}
+
+.subject-btn{
+	all: unset;
+	cursor: pointer;
+	color: white;
+	padding: 5px 10px;
+	font-size: 20px;
+	margin: 5px;
+}
+
+
+
+.post-quiz-link:hover::before{
+	opacity: 1;
+}
+
+.post-quiz-link::before{
+	opacity: 0;
+	content: 'Add Quiz';
+	position: absolute;
+	left: -150px;
+	top: -30px;
+	width:90px;
+	text-align: center;
+	padding: 10px 30px;
+	font-size: 15px;
+	background-color: darkslategray;
+	clip-path: polygon(10% 10%, 90% 10%, 90% 80%, 100% 100%, 80% 90%, 10% 90% );
+	transition: opacity 0.5s ease;	
+	
+}
+
+.post-quiz-loading{
+	display: none;
+	animation-name: loading;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+	height: 40px;
+	margin-right: 10px;
+}
+
+.input-wrapper{	
+	display: flex;
+	flex-direction: column;
+	flex-flow: column-reverse;
+	align-items: flex-start;
+}
+
+		
+.input-wrapper>.field{
+
+	all: unset;
+	background-color: #eee;
+	height: 30px;
+	position: relative;
+	border: 1px solid lightskyblue;
+	transition: all 0.1s ease;
+	width: 100%;
+
+}
+		
+.input-wrapper>.field:focus{
+
+	border: 3px solid lightskyblue;
+
+}
+		
+.input-wrapper>label{
+	transform: translateY(10px);
+	opacity: 0;
+	transition: all 0.3s ease; 
+
+}
+
+.input-wrapper>.field::placeholder{
+
+	transition: color 0.3s ease;
+}
+
+.input-wrapper>.field:focus::placeholder{
+	color: transparent;
+
+}
+
+.input-wrapper>.field:focus + label{
+	opacity: 1;
+	transform: translateY(0px);
+}
+
+@keyframes load {
+
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+
+}
+
+@keyframes loading {
+
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+
+}
+
+@media(max-width: 600px){
+	#subjects::after{
+		width: 300px;
+		
+	}
+	
+	#subjects{
+		width: 80%;
+		
+	}
+	
+}
