@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 var admin = require("firebase-admin");
-var serviceAccount = process.env.FIREBASE_KEY || require(path.join(__dirname, 'key.json'));
+var serviceAccount = JSON.parse(process.env.FIREBASE_KEY) || require(path.join(__dirname, 'key.json'));
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
