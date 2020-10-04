@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 export const QuizListContext = createContext();
 
@@ -16,7 +16,16 @@ const QuizListContextProvider = (props)=>{
 	
 //	getData();
 		
-	
+	useEffect(()=>{
+		if(fetched) return;
+		fetch('/get_quizes')
+		.then((data)=> data.json() )
+		.then((quizes)=>{
+			setFetched(true);
+			setQuizList(quizes.data);
+		}).catch(err=>console.log(err));
+	}, []);
+
 	
 	return(
 		<QuizListContext.Provider value={{quizList, setQuizList, fetched, setFetched, subjects}}>

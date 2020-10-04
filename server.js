@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 var admin = require("firebase-admin");
-var serviceAccount = JSON.parse(process.env.FIREBASE_KEY) || require(path.join(__dirname, 'key.json'));
+var serviceAccount = (process.env.FIREBASE_KEY) ? JSON.parse(process.env.FIREBASE_KEY) : require(path.join(__dirname, 'key.json'));
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -188,7 +188,7 @@ app.post('/post_quiz', function (req, res) {
 });
 
 
-app.get('/', (req, res)=>{
+app.get('*', (req, res)=>{
 	console.log(req.url);
 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 	

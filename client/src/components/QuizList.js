@@ -7,7 +7,7 @@ const QuizList = (props)=>{
 	
 	const { quizList, setQuizList, fetched, setFetched, subjects } = useContext(QuizListContext);
 	const [subject, setSubject] = useState("all");
-	
+
 	useEffect(()=>{
 		if(fetched) return;
 		fetch('/get_quizes')
