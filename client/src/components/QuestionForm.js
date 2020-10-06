@@ -3,9 +3,7 @@ import React from 'react';
 const QuestionForm = (props)=>{
 	
 	const styleForm = () => {
-		
 		return {
-			
 			display: "grid",
 			gridTemplateAreas: `
 				"header header header"
@@ -15,7 +13,6 @@ const QuestionForm = (props)=>{
 				`,
 			gridGap: "10px",
 			gridTemplateRows: "auto 60px 60px 40px"
-			
 		};
 		
 	};

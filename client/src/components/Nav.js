@@ -20,20 +20,14 @@ const Nav = (props)=>{
 		}
 		
 		if(type === "sign in"){
-			
 			return{
 				textDecoration: "none",
 				color:"white",
 				margin: "0px 20px 0px auto",
-				
-				
 			}
 			
 		}
 
-			
-			
-			
 		return {
 			textDecoration: "none",
 			color:"white",

@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 
 var admin = require("firebase-admin");
+
+//get the api key:
+//in dev- get the key from the key.json file
+//in production- get the key from the heroku config variables
 var serviceAccount = (process.env.FIREBASE_KEY) ? JSON.parse(process.env.FIREBASE_KEY) : require(path.join(__dirname, 'key.json'));
 
 admin.initializeApp({
@@ -10,11 +14,9 @@ admin.initializeApp({
 });
 
 
-//const {Firestore} = require('@google-cloud/firestore');
-
 const db = admin.firestore();
 
-//Port
+//get port in environmet else use port 8080
 const PORT = process.env.PORT || 8080;
 
 //Initialize express app
@@ -30,7 +32,6 @@ app.listen(PORT, (err) => {
 
 //Set the public folder as static
 app.use(express.static('client/build'));
-
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -59,123 +60,11 @@ app.get('/get_quizes', function (req, res) {
 		
 	}).catch(err=>console.log(err));
 	;
-	
-//	let data = [
-//			{
-//			title: "silly googse",
-//			 id: 1,
-//			 questions: 
-//			[
-//				{
-//				 question: "Who will be the next nba champions?",
-//				 answer_1: "me",
-//				 answer_2: "lakers",
-//				 answer_3: "miami heat",
-//				 answer_4: "Clippers",
-//				 solution:"answer_3"
-//			 
-//			 	} 
-//			  
-//			  ] 
-//			},
-//		
-//			{
-//			title: "silly googse",
-//			 id: 2,
-//			 questions: 
-//			[
-//				{
-//				 question: "Who will be the next nba champions?",
-//				 answer_1: "me",
-//				 answer_2: "lakers",
-//				 answer_3: "miami heat",
-//				 answer_4: "Clippers",
-//				 solution:"answer_3"
-//			 
-//			 	} 
-//			  
-//			  ] 
-//			},
-//		
-//			{
-//			title: "silly googse",
-//			 id: 3,
-//			 questions: 
-//			[
-//				{
-//				 question: "Who will be the next nba champions?",
-//				 answer_1: "me",
-//				 answer_2: "lakers",
-//				 answer_3: "miami heat",
-//				 answer_4: "Clippers",
-//				 solution:"answer_3"
-//			 
-//			 	} 
-//			  
-//			  ] 
-//			},
-//		
-//			{
-//			title: "silly googse",
-//			 id: 4,
-//			 questions: 
-//			[
-//				{
-//				 question: "Who will be the next nba champions?",
-//				 answer_1: "me",
-//				 answer_2: "lakers",
-//				 answer_3: "miami heat",
-//				 answer_4: "Clippers",
-//				 solution:"answer_3"
-//			 
-//			 	} 
-//			  
-//			  ] 
-//			},
-//		
-//			{
-//			title: "silly googse",
-//			 id: 5,
-//			 questions: 
-//			[
-//				{
-//				 question: "Who will be the next nba champions?",
-//				 answer_1: "me",
-//				 answer_2: "lakers",
-//				 answer_3: "miami heat",
-//				 answer_4: "Clippers",
-//				 solution:"answer_3"
-//			 
-//			 	} 
-//			  
-//			  ] 
-//			},
-//		
-//			{
-//			title: "silly googse",
-//			 id: 6,
-//			 questions: 
-//			[
-//				{
-//				 question: "Who will be the next nba champions?",
-//				 answer_1: "me",
-//				 answer_2: "lakers",
-//				 answer_3: "miami heat",
-//				 answer_4: "Clippers",
-//				 solution:"answer_3"
-//			 
-//			 	} 
-//			  
-//			  ] 
-//			},
-//		
-//		
-//	]
-	
-	
+		
 	
 });
 
+//route for users to post new quizes
 app.post('/post_quiz', function (req, res) {
 	
 	const quiz = req.body;
@@ -187,7 +76,7 @@ app.post('/post_quiz', function (req, res) {
 	
 });
 
-
+//catch all route so whenever user refreshes a page the index.html is going to be served
 app.get('*', (req, res)=>{
 	console.log(req.url);
 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));

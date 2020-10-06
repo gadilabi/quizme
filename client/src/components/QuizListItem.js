@@ -23,9 +23,10 @@ const QuizListItem = (props)=>{
 			textDecoration: "none",
 			color: "white",
 			fontSize: "20px",
-			marginBottom: "10px"
+			marginBottom: "10px",
+			textAlign: "center",
 			
-		}
+		};
 	}
 	
 	return (

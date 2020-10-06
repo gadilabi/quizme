@@ -4,7 +4,7 @@ export const QuizListContext = createContext();
 
 const QuizListContextProvider = (props)=>{
 
-	const [subjects] = useState([{name: "all", color: "darkcyan"},{name: "Science", color: "lightpink"}, {name: "History", color: "lightskyblue"}, {name: "Art", color: "lightcoral"}]);
+	const [subjects] = useState([{name: "all", color: "darkcyan"},{name: "Science", color: "lightslategray"}, {name: "History", color: "cornflowerblue"}, {name: "Art", color: "lightcoral"}]);
 	const [fetched, setFetched] = useState(false);
 	const [quizList, setQuizList] = useState([
 		

@@ -8,8 +8,6 @@ const Question = (props)=>{
 			flexDirection: "column"
 			
 		};
-		
-		
 	}
 	
 	function styleAnswer(answer){
@@ -43,8 +41,6 @@ const Question = (props)=>{
 					color: "lightseagreen"
 					
 				}
-
-			
 		}
 		
 	}

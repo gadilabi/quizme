@@ -6,15 +6,9 @@ const Quiz = (props)=>{
 	
 	//List of all quizes
 	const { quizList, setQuizList, subjects } = useContext(QuizListContext);
-
-	console.log(subjects);
 	
 	//Number of questions in currently created quiz
-	const [state, setState] = useState({
-		
-		numberOfQuestions: 1,
-	});
-	
+	const [numberOfQuestions, setNumberOfQuestions] = useState(1);	
 	//Is the page loading? set to true after posting the quiz
 	const [isLoading, setIsLoading] = useState(false);
 	
@@ -37,17 +31,7 @@ const Quiz = (props)=>{
 			solution: null
 		
 		}]);
-	
-	
-	const subjectsJSX = subjects.map((subject)=>{
 		
-		return (
-			<option value={subject.name} style={{backgroundColor: subject.color}} >{subject.name}</option>
-			
-		);
-		
-	});
-	
 	//Update the title of the quiz
 	const updateTitle = (e) =>{
 		const title = e.target.value;
@@ -69,7 +53,7 @@ const Quiz = (props)=>{
 	
 	//Create the html for question forms
 	let questionForms = [];
-	for(let i=0; i<state.numberOfQuestions; i++){
+	for(let i=0; i<numberOfQuestions; i++){
 		
 		questionForms.push(<QuestionForm updateQuiz={updateQuiz} index={i}/>)
 		
@@ -116,10 +100,8 @@ const Quiz = (props)=>{
 	
 	//Add question form to the dom
 	const addQuestion = (e)=>{
-		setState({
-			numberOfQuestions: state.numberOfQuestions + 1
-			
-		});
+
+		setNumberOfQuestions(numberOfQuestions + 1);
 		
 		setQuiz(
 			[...quiz, {
@@ -257,6 +239,11 @@ const Quiz = (props)=>{
 		
 	}
 	
+	const subjectsJSX = subjects.map((subject)=>{
+		return (
+			<option value={subject.name} style={{backgroundColor: subject.color}} >{subject.name}</option>
+		);
+	});
 	
 	return (
 		<div style={stylePostQuizPage()} >
