@@ -75,6 +75,8 @@ const Quiz = (props)=>{
 			borderRadius: "6px",
 			display: "flex",
 			flexDirection: "column",
+			boxSizing: "border-box",
+			maxWidth: "90%"
 			
 		};
 		
@@ -174,6 +176,7 @@ const Quiz = (props)=>{
 	/* RENDERING */
 	
 	if(quizList.length === 0){
+		console.log("loading");
 		//If the data was not fetched yet render loading animation
 		return (
 			<div style={{minHeight: "100vh", display: "grid", placeItems: "center"}}>

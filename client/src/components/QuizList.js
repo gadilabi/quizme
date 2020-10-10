@@ -56,16 +56,24 @@ const QuizList = (props)=>{
 	}
 	
 	function styleQuizListWrapper(){
-		return {
+		
+		let styles = {
+			
 			display: "grid",
 			gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
 			gridAutoRows:"150px",
 			marginTop: "20px",
-			width: "50%",
 			borderRadius: "6px",
+			justifyContent: "center"
 			
-		
 		}
+		
+		if(window.innerWidth > 800)
+			styles.width = "50%";
+		else
+			styles.width = "90%";
+		
+		return styles;
 	}
 	
 	

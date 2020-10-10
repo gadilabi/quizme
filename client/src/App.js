@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import Nav from './components/Nav.js';
@@ -10,6 +10,9 @@ import QuizListContextProvide from './contexts/QuizListContext.js';
 
 function App() {
 	
+	useEffect(() => {
+	document.title = "QuizMe"
+	}, []);
 	
 	return (
 	<BrowserRouter>

@@ -5,14 +5,15 @@ const QuizListItem = (props)=>{
 	const styleWrapper = ()=>{
 		return {
 			padding: "5px 10px",
-			backgroundColor: props.subject.color ,
+			backgroundColor: props.subject.color,
 			margin: "10px",
 			borderRadius: "6px",
 			display: "flex",
 			justifyContent: "center",
 			alignItems: "center",
 			flexDirection: "column",
-			color: "white"
+			color: "white",
+
 		};
 		
 	};
