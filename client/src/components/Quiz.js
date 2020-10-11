@@ -5,11 +5,11 @@ import loading from '../img/loading.svg';
 
 const Quiz = (props)=>{
 	
-	//decide if spinner or render
-	const [isLoading, setIsLoading] = useState(true);
-	
 	//Get the shared state from the context
 	const {quizList, setQuizList, fetched, setFetched} = useContext(QuizListContext);
+	
+	//decide if spinner or render
+	const [isLoading, setIsLoading] = useState(true);
 	
 	//The grade the user got in the quiz
 	const [grade, setGrade] = useState("0");
@@ -21,18 +21,15 @@ const Quiz = (props)=>{
 	const quizId = props.match.params.id;
 	
 	//The find the quiz in the quiz list by id
-	const quiz = quizList.find((quiz)=> quiz.id == quizId);
-	
-	//Destructure the quiz if the quizList was already fetched or set deault values if not
-	const {title, questions, id} = (quizList.length > 0) ? quiz : {title: "", questions: [{}], id: 1};
-	
+	const [quiz, setQuiz] = useState ((quizList.length > 0) ? quizList.find((quiz)=> quiz.id == quizId) : {title: "", questions: [], id: quizId});
+		
 	//hold the currently marked answers by the user
-	const [solution, setSolution] = useState(new Array(questions.length).fill({marked: null, correct:null}));
+	const [solution, setSolution] = useState(new Array(quiz.questions.length).fill({marked: null, correct:null}));
 	
 	//Update the solution when user marks an answer
 	const markAnswer = (questionNumber, answer)=>{
 		let solutionCopy = [...solution];
-		const checkAnswer = (answer == questions[questionNumber].solution) ? true : false;
+		const checkAnswer = (answer == quiz.questions[questionNumber].solution) ? true : false;
 		solutionCopy[questionNumber] = {marked: answer, correct: checkAnswer};
 		
 		setSolution(solutionCopy);
@@ -47,6 +44,11 @@ const Quiz = (props)=>{
 		.then((quizes)=>{
 			setFetched(true);
 			setQuizList(quizes.data);
+			
+			let quiz = quizes.data.find((quiz) => quiz.id === quizId );
+			setQuiz(quiz);
+			setSolution(new Array(quiz.questions.length).fill({marked: null, correct:null}));
+			
 		}).catch(err=>console.log(err));
 	}, []);
 
@@ -175,19 +177,8 @@ const Quiz = (props)=>{
 
 	/* RENDERING */
 	
-	if(quizList.length === 0){
-		console.log("loading");
-		//If the data was not fetched yet render loading animation
-		return (
-			<div style={{minHeight: "100vh", display: "grid", placeItems: "center"}}>
-				<img className="post-quiz-loading" style={styleLoading(isLoading)} src={loading} alt=""/>
-			</div>
-		);
-		
-	}
-	
-	//If the data was fetched...
-	else{
+	if(quiz.questions.length > 0 && solution.length === quiz.questions.length){
+		const {questions, title} = quiz;
 		
 		//Create jsx of the questions
 		const questionsJSX = questions.map((question, index)=>{
@@ -218,7 +209,19 @@ const Quiz = (props)=>{
 			</div>
 
 		);
+				
+	}
+	
+	//If the data was fetched...
+	else{
+		//If the data was not fetched yet render loading animation
+		return (
+			<div style={{minHeight: "100vh", display: "grid", placeItems: "center"}}>
+				<img className="post-quiz-loading" style={styleLoading(isLoading)} src={loading} alt=""/>
+			</div>
+		);
 		
+
 		
 	}
 	

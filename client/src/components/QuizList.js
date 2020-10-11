@@ -21,9 +21,7 @@ const QuizList = (props)=>{
 
 	const quizListElements = quizList.map((quiz)=>{
 
-		console.log(subject, quiz.subject);
 		if(quiz.subject === subject || subject === "all"){
-			console.log("inside");	
 			const color = subjects.reduce((a, subject)=>{
 				if(subject.name === quiz.subject)
 					return subject.color;
